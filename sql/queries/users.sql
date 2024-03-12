@@ -1,0 +1,9 @@
+-- name: CreateUser :one
+INSERT INTO USERS(ID, CREATED_AT, UPDATED_AT, NAME, API_KEY)
+VALUES ($1, $2, $3, $4, $5)
+RETURNING *;
+
+-- name: GetUser :one
+SELECT * FROM USERS
+WHERE API_KEY = $1;
+
